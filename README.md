@@ -1,4 +1,5 @@
 algorithms
 ==========
 
-Algorithms training
+Algorithms training:
+- Rugby score
