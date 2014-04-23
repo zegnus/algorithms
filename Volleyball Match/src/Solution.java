@@ -49,7 +49,7 @@ public class Solution {
             double combinations = score(0, 0);
 
             if (combinations > UPPER_LIMIT) {
-                //combinations = combinations % UPPER_LIMIT;
+                combinations = combinations % UPPER_LIMIT;
             }
 
             System.out.println((int) combinations);
