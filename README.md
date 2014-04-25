@@ -8,3 +8,4 @@ Algorithms training:
 - Find value in an ordered and rotated array
 - 3SUM
 - Bitonic search
+- Randomness
