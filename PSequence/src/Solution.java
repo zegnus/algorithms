@@ -24,10 +24,10 @@ public class Solution {
         boolean end = false;
 
         while (!end) {
-            //if (stack.size() == N) {
+            if (stack.size() == N) {
                 printStack(stack);
                 //numberOfTotalCombinations++;
-            //}
+            }
 
             int nextElement = stack.poll() + 1;
 
