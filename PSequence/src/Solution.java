@@ -14,6 +14,9 @@ public class Solution {
         int N = scanner.nextInt();
         int P = scanner.nextInt();
 
+        int numberOfCombinations = getNumberOfCombinations(N, P);
+        System.out.println("combinations of " + P + ", n: " + numberOfCombinations);
+
         numberOfTotalCombinations = 0;
 
         LinkedList<Integer> stack = new LinkedList<Integer>();
@@ -53,6 +56,27 @@ public class Solution {
         }
 
         System.out.println((int)(numberOfTotalCombinations % (Math.pow(10, 9) + 7)));
+    }
+
+    /**
+     * Calculate all possible combinatinos between 1 and pEnd that
+     * does not exceed pairs that the multiplication exceeds pEnd
+     * @param pEnd
+     * @return
+     */
+    private static int getNumberOfCombinations(int pDigits, int pEnd) {
+        int sum = 0;
+        int half = pEnd/2;
+
+        for (int i=1; i<=half; i++) {
+            sum += pEnd/i;
+        }
+
+        int halfEndTotalValidCombinations = pDigits * (pDigits - (pDigits/2));
+
+        System.out.println("halfEndTotalValidCombinations: " + halfEndTotalValidCombinations);
+
+        return sum + pEnd - half;
     }
 
     private static void printStack(LinkedList<Integer> pStack) {
