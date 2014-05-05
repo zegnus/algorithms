@@ -39,11 +39,13 @@ public class Solution {
 
     private static class Node {
         public final int value;
+        public final int depth;
         public Node left;
         public Node right;
 
-        public Node(int pValue) {
+        public Node(int pValue, int pDepth) {
             value = pValue;
+            depth = pDepth;
         }
     }
 
@@ -59,23 +61,17 @@ public class Solution {
         //Scanner scanner = new Scanner(System.in);
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("BSTmaintenance/files/input2.txt"));
+            scanner = new Scanner(new File("BSTmaintenance/files/input.txt"));
             int numberOfNodes = scanner.nextInt() + 1;
 
             mParent = new int[numberOfNodes];
 
-            int[] value = new int[numberOfNodes];
-
             for (int i = 0; i < numberOfNodes - 1; i++) {
-                value[i] = scanner.nextInt();
+                add(scanner.nextInt());
+                //System.out.println(getAllCosts());
             }
 
-            for (int i = 0; i < numberOfNodes - 1; i++) {
-                add(value[i]);
-                System.out.println(getAllCosts());
-            }
-
-            //BFS(root);
+            BFS(root);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -95,9 +91,10 @@ public class Solution {
     }
 
     private static void add(int pValue) {
-        root = add(root, pValue);
+        root = add(root, pValue, 0);
 
         // calculate costs from newNodeValue to all other costs
+        /*
         int parentNode = mParent[pValue];
 
         for (Integer value : nodesValue) {
@@ -107,20 +104,21 @@ public class Solution {
         }
 
         nodesValue.add(pValue);
+        */
     }
 
-    private static Node add(Node pNode, int pValue) {
+    private static Node add(Node pNode, int pValue, int pDepth) {
         if (pNode == null) {
-            pNode = new Node(pValue);
+            pNode = new Node(pValue, pDepth);
             mCost.put(new Pair(pValue, pValue), 0);
         } else {
             int newNodeValue = 0;
 
             if (pValue < pNode.value) {
-                pNode.left = add(pNode.left, pValue);
+                pNode.left = add(pNode.left, pValue, pDepth+1);
                 newNodeValue = pNode.left.value;
             } else if (pValue > pNode.value) {
-                pNode.right = add(pNode.right, pValue);
+                pNode.right = add(pNode.right, pValue, pDepth+1);
                 newNodeValue = pNode.right.value;
             }
 
@@ -141,7 +139,7 @@ public class Solution {
         while (!queue.isEmpty()) {
             Node n = queue.poll();
 
-            System.out.print(n.value);
+            System.out.print(n.value + " D:" + n.depth + " ");
 
             currentLevel--;
 
