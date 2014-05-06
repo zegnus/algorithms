@@ -9,3 +9,4 @@ Algorithms training:
 - 3SUM
 - Bitonic search
 - Randomness
+- Manasa and Stones
