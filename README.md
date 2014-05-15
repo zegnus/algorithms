@@ -10,3 +10,4 @@ Algorithms training:
 - Bitonic search
 - Randomness
 - Manasa and Stones
+- Coin combination
