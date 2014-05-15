@@ -3,6 +3,7 @@ algorithms
 
 Algorithms training:
 - Rugby score
+- Rugby score recursive
 - Binary search with ordered array
 - Find lowest value in an ordered and rotated array
 - Find value in an ordered and rotated array
