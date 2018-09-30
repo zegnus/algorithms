@@ -27,6 +27,9 @@ public class FindLowestInOrderedRotatedArray {
 
         array = new int[] {6, 5};
         System.out.println("minimum at " + Arrays.toString(array) + " is " + findMinimum(array));
+
+        array = new int[] {5, 6};
+        System.out.println("minimum at " + Arrays.toString(array) + " is " + findMinimum(array));
     }
 
     private static int findMinimum(int[] pInput) {
@@ -37,7 +40,7 @@ public class FindLowestInOrderedRotatedArray {
 
         int init = 0;
         int end = length - 1;
-        int mid;
+        int mid = 0;
 
         while (init != end) {
             mid = (init + end) / 2;
@@ -49,6 +52,6 @@ public class FindLowestInOrderedRotatedArray {
             }
         }
 
-        return pInput[init + 1];
+        return pInput[mid + 1];
     }
 }
