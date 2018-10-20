@@ -21,40 +21,28 @@ public class Solution {
     }
 
     private static void sum(Integer[] pCoins, int pTarget) {
-        sum(Arrays.asList(pCoins), pTarget, new ArrayList<Integer>());
+        sum(Arrays.asList(pCoins), pTarget, new ArrayList<Integer>(), 0);
     }
 
-    private static void sum(List<Integer> pCoins, int pTarget, ArrayList<Integer> pCombination) {
-        int sum = 0;
-        for (Integer coin : pCombination) {
-            sum += coin;
-        }
-
-        if (sum == pTarget) {
+    private static void sum(List<Integer> pCoins, int pTarget, ArrayList<Integer> pCombination, int pSum) {
+        if (pSum == pTarget) {
             System.out.println(Arrays.toString(pCombination.toArray()));
             return;
         }
 
-        if (sum > pTarget) {
+        if (pSum > pTarget) {
             return;
         }
 
-        // we will take all the coins starting from the left and match all the combinations
-        // with all the rest of the coins
+        for (int size = pCoins.size(), i = 0; i < size; i++) {
+            ArrayList<Integer> coinsRemaining = new ArrayList<>(pCoins.subList(i + 1, size));
 
-        int size = pCoins.size();
-        for (int i = 0; i < size; i++) {
-            // we add the coin to the valid combination
-            // we create a new array because the next iteration has to start from the original
-            // pCombination
-            ArrayList<Integer> newCombination = new ArrayList<Integer>();
-            newCombination.addAll(pCombination);
+            ArrayList<Integer> newCombination = new ArrayList<>(pCombination);
             newCombination.add(pCoins.get(i));
 
-            ArrayList<Integer> coinsRemaining = new ArrayList<Integer>();
-            coinsRemaining.addAll(pCoins.subList(i + 1, size));
+            int sum = pSum + pCoins.get(i);
 
-            sum(coinsRemaining, pTarget, newCombination);
+            sum(coinsRemaining, pTarget, newCombination, sum);
 
             // when we return here, we will try with the next element
         }

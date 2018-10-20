@@ -28,7 +28,7 @@ public class FindLowestInOrderedRotatedArray {
         array = new int[] {6, 5};
         System.out.println("minimum at " + Arrays.toString(array) + " is " + findMinimum(array));
 
-        array = new int[] {5, 6};
+        array = new int[] {8, 9, 10, 1, 2};
         System.out.println("minimum at " + Arrays.toString(array) + " is " + findMinimum(array));
     }
 

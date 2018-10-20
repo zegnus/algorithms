@@ -32,10 +32,11 @@ public class Solution {
             return;
         }
 
+
         for (int pCoin : pCoins) {
             int sum = pSum + pCoin;
+            ArrayList<Integer> newList = new ArrayList<>(pList);
 
-            ArrayList<Integer> newList = new ArrayList(pList);
             newList.add(pCoin);
 
             sum(pCoins, sum, newList, pTarget);
