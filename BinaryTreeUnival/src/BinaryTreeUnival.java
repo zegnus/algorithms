@@ -1,4 +1,4 @@
-public class UnivalTree {
+public class BinaryTreeUnival {
     public static void main(String args[]) {
         Node n = initialiseTree();
 
